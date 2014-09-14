@@ -1,10 +1,25 @@
 body{background: rgb(192,222,237);}
 
 .zhihu-heading{  
-	height: 80px;
-	background: rgb(248,248,248);
-	margin: -10px;
-	border:2px solid rgb(231,231,231);
+	height: 60px;
+	background: rgb(103,176,209);
+	border:1px solid rgb(103,176,209);
+	margin: 0 auto;
+	width: 1000px;
+	text-align: center;
+}
+
+.zhihu-top-heading{
+	height: 100px;
+	margin: 0 auto;
+	text-align: center;
+}
+
+.zhihu-main-title{font-size: 40px;}
+
+.zhihu-help-block{
+	color: #7f8c8d;
+	margin-top: 5px;
 }
 
 .zhihu-body{
@@ -16,17 +31,14 @@ body{background: rgb(192,222,237);}
 
 .main-news-panel{
 	float: left;
-	width: 300px;
-	background: rgb(255,255,255);
-	height: 220px;
-	margin-right: 20px;
-	border:1px solid rgb(248,248,248);
+	width: 175px;
+	background: rgb(58,190,192);
+	margin-right: 23px;
+	border:1px solid rgb(58,190,192);
+	margin-bottom: 30px;
 }
 
-.main-news-panel:hover{
-	background: rgb(245,248,240);
-	border:1px solid rgb(245,248,240);
-}
+.main-news-panel:hover{border:1px solid #3498db;}
 
 .main-news-panel-heading{
 	height: 150px;
@@ -34,18 +46,65 @@ body{background: rgb(192,222,237);}
 }
 
 .main-news-panel-heading img{
-	width: 300px;
-	height: 150px;
+	width: 140px;
+	height: 140px;
+	border-radius: 70px;
+	margin-right: 15px;
+	margin-left: 15px;
+	margin-top: 15px;
 }
+
+.main-news-panel-content{
+	padding-left: 15px;
+	padding-right: 15px;
+}
+
+.news-title{
+	height: 70px;overflow: hidden;}
 
 .news-title a{
-	text-decoration: none;
-	font-size: 16px;
-}
+	text-decoration: none;font-size: 16px;color: #ecf0f1;}
 
-.news-title a:hover{color: rgb(29,148,225);}
+.news-title a:hover{color: #2c3e50;}
 
 .news-date{
-	margin-top: 5px;
-	color: rgb(176,163,162);
+	margin-top: 5px;color: #ecf0f1;font-size: 12px;}
+
+.zhihu-heading-menu{
+	list-style: none;
+	overflow: hidden;
+	margin: 0;
+	margin-left: -38px;
+}
+
+.zhihu-heading-menu li{
+	float: left;
+	border-right: 2px solid rgb(110,181,211);
+	height: 60px;
+	color: #ecf0f1;
+	display: inline;
+	padding: 0;
+	padding-left: 20px;
+	padding-right: 20px;
+}
+
+.zhihu-heading-menu li:hover{
+	cursor: pointer;background: rgb(81,176,220);}
+
+.main-news-button{
+	width: 100px;
+	height: 30px;
+	background: rgb(32,99,154);
+	margin: 0 auto; 
+	margin-bottom: 15px;
+}
+
+.main-news-button:hover{
+	background: rgb(48,150,212);cursor: pointer;}
+
+.main-news-button a{
+	text-decoration: none;
+	color: #ecf0f1;
+	margin: 0 auto;
+	margin-left: 20px;
 }
