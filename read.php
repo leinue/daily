@@ -29,7 +29,9 @@ echo '<div class="main-wrap">
 </div>';
 
 ?>
-
+<script>
+document.getElementById('zhihu-model').style.display="none";
+</script>
 <?php
 require('footer.php');
 ?>

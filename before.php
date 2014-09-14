@@ -162,26 +162,6 @@ for ($i=$startKey; $i < $endKey; $i++) {
 	</div></a>';	
 }
 
-/*for ($i=$startKey; $i < $endKey; $i++) { 
-	$randmath=rand(0,19);
-	if($i<12){
-		echo '<a href=""><div class="main-news-panel-before" style="background: '.$rgbValue[$randmath].'">
-		<p>'.$totalMon[$i].'</p>
-	</div></a>';
-	}else{
-		//print_r($totalMon[$i]);
-		foreach ($totalMon[$i] as $keyInner => $valueInner) {
-			echo '<a href=""><div class="main-news-panel-before" style="background: '.$rgbValue[$keyInner].'">
-		<p>'.$valueInner.'</p>
-	</div></a>';
-			//echo $keyInner."  ";
-			if($keyInner==$endKey){
-				break;
-			}
-		}
-	}
-}*/
-
 ?>
 
 <div class="pageindex">
