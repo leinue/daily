@@ -15,6 +15,15 @@ body{background: rgb(192,222,237);}
 	text-align: center;
 }
 
+.zhihu-heading-model{
+	float: right;
+	width: 23px;
+	height: 63px;
+	margin-top: -62px;
+	margin-right: -1px;
+	background: rgb(192,222,237);
+}
+
 .zhihu-main-title{font-size: 40px;}
 
 .zhihu-help-block{

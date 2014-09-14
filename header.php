@@ -17,5 +17,7 @@
 				<a href="index.php"><li><p>过往消息</p></li></a>
 				<a href="index.php"><li><p>联系作者</p></li></a>
 				<a href="index.php"><li><p>API</p></li></a>
+
 			</ul>
+			<div class="zhihu-heading-model"></div>
 		</div>
