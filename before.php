@@ -16,25 +16,6 @@ $unixtimestamp=strtotime("2013-05-20");
 
 $days=round(($nowTime-$unixtimestamp)/3600/60);
 
-$pages=ceil($days/20);
-
-$currentPage=$_GET['page'];
-
-if(strlen($currentPage)==0){$currentPage=1;}
-
-if($currentPage==$pages){
-	$nextPage=$pages;
-}else{
-	$nextPage=$currentPage+1;
-}
-
-if($currentPage=="1"){
-	$prePage="1";
-}else{
-	$prePage=$currentPage-1;
-}
-
-
 $rgbValue=array(
 	"#1abc9c","#2ecc71","#3498db","#9b59b6","#34495e",
 	"#16a085","#27ae60","#2980b9","#8e44ad","#2c3e50",
@@ -48,6 +29,7 @@ foreach ($timeWithoutUnix_exploded as $key => $value) {
 	$timeWithoutUnix.=$value;
 }
 
+//判断是不是合法月份
 function isMonth($mon){
 	$montharr=array(1,2,3,4,5,6,7,8,9,10,11,12);
 	$flag=0;
@@ -63,6 +45,7 @@ function isMonth($mon){
 	}
 }
 
+//打印出某年某月的天数
 function printDate($year,$mon){
 	//20130520
 	$montharr=array(1,2,3,4,5,6,7,8,9,10,11,12);
@@ -86,20 +69,21 @@ function printDate($year,$mon){
 	return $date;
 }
 
+//获得20130520到0531的天数,因为知乎日报开始自20130520
 $march2013=printDate("2013","05");
 $march2013_fixed=array();
 for ($i=19; $i <=30; $i++) { 
 	$march2013_fixed[]=$march2013[$i];
 }
 
+//获得2013年剩下的天数
 $mon2013=array();
 
 for ($i=6; $i <=12; $i++) { 
 	$mon2013[]=printDate("2013",$i);
 }
 
-//print_r($mon2013);
-
+//获得2014年及其以后的天数
 $monOther=array();
 for ($i=2014; $i <= $timeWithoutUnix_exploded[0]; $i++) { 
 	for ($j=1; $j <=$timeWithoutUnix_exploded[1]; $j++) { 
@@ -107,40 +91,96 @@ for ($i=2014; $i <= $timeWithoutUnix_exploded[0]; $i++) {
 	}
 }
 
-//print_r($monOther);
-
 $monOther_fixed=array();
 
 /*$nowMon=array();
 for ($i=0; $i < getMonthLastDay($timeWithoutUnix_exploded[1],$timeWithoutUnix_exploded[0])-$timeWithoutUnix_exploded[2]-2; $i++) { 
 	$monOther_fixed[]=$monOther[$timeWithoutUnix_exploded[1]-1][$i];
 }*/
+//剔除当月的多余部分
 array_splice($monOther[count($monOther)-1],0,(getMonthLastDay($timeWithoutUnix_exploded[1],$timeWithoutUnix_exploded[0])-$timeWithoutUnix_exploded[2]));
 
 foreach ($monOther[count($monOther)-1] as $key => $value) {
 	$monOther[count($monOther)-1][$key]=$value-16;
 }
 
+//将多个数组混合到一起
 $totalMon=array_merge($march2013_fixed,$mon2013,$monOther);
 
-//print_r($totalMon);
+//释放内存
+$march2013=array();
+$march2013_fixed=array();
+$mon2013=array();
+$monOther=array();
 
 echo '<div class="zhihu-body">';
 
+//将二维数组转换为一维数组
 foreach ($totalMon as $key => $value) {
-	$randmath=rand(0,19);
-	if($key<12){
-		echo '<a href=""><div class="main-news-panel-before" style="background: '.$rgbValue[$randmath].'">
-		<p>'.$value.'</p>
-	</div></a>';	
-	}else{
-		foreach ($value as $keyInner => $valueInner) {
-			echo '<a href=""><div class="main-news-panel-before" style="background: '.$rgbValue[$randmath].'">
-		<p>'.$valueInner.'</p>
-	</div></a>';	
+	if(is_array($value)){
+		foreach ($value as $key2 => $value2) {
+			$intervalDate[]=$value2;
 		}
+	}else{
+		$intervalDate[]=$value;
 	}
 }
+
+$totalMon=array();
+
+//print_r($intervalDate);
+
+$pages=ceil(count($intervalDate)/30);
+
+$currentPage=$_GET['page'];
+
+if(strlen($currentPage)==0){$currentPage=1;}
+
+if($currentPage==$pages){
+	$nextPage=$pages;
+}else{
+	$nextPage=$currentPage+1;
+}
+
+if($currentPage=="1"){
+	$prePage="1";
+}else{
+	$prePage=$currentPage-1;
+}
+
+$startKey=30*$currentPage-30;
+$endKey=$startKey+30;
+if($endKey>count($intervalDate)){
+	$tmp=$endKey-count($intervalDate);
+	$endKey=$endKey-$tmp;
+}
+
+for ($i=$startKey; $i < $endKey; $i++) { 
+	$randmath=rand(0,19);
+	echo '<a href=""><div class="main-news-panel-before" style="background: '.$rgbValue[$randmath].'">
+		<p>'.$intervalDate[$i].'</p>
+	</div></a>';	
+}
+
+/*for ($i=$startKey; $i < $endKey; $i++) { 
+	$randmath=rand(0,19);
+	if($i<12){
+		echo '<a href=""><div class="main-news-panel-before" style="background: '.$rgbValue[$randmath].'">
+		<p>'.$totalMon[$i].'</p>
+	</div></a>';
+	}else{
+		//print_r($totalMon[$i]);
+		foreach ($totalMon[$i] as $keyInner => $valueInner) {
+			echo '<a href=""><div class="main-news-panel-before" style="background: '.$rgbValue[$keyInner].'">
+		<p>'.$valueInner.'</p>
+	</div></a>';
+			//echo $keyInner."  ";
+			if($keyInner==$endKey){
+				break;
+			}
+		}
+	}
+}*/
 
 ?>
 
