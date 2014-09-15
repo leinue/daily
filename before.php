@@ -1,6 +1,13 @@
 <?php
 require('header.php');
 
+include('fun.php');
+
+$method=test_input($_GET['method']);
+$date=test_input($_GET['token']);
+
+if(strlen($method)==0 || strlen($date)==0){
+
 function getMonthLastDay($month,$year){
 	$nextMonth=(($month+1)>12) ? 1 : ($month+1);
 	$year= ($nextMonth>12) ? ($year+1) : $year;
@@ -101,7 +108,7 @@ for ($i=0; $i < getMonthLastDay($timeWithoutUnix_exploded[1],$timeWithoutUnix_ex
 array_splice($monOther[count($monOther)-1],0,(getMonthLastDay($timeWithoutUnix_exploded[1],$timeWithoutUnix_exploded[0])-$timeWithoutUnix_exploded[2]));
 
 foreach ($monOther[count($monOther)-1] as $key => $value) {
-	$monOther[count($monOther)-1][$key]=$value-16;
+	$monOther[count($monOther)-1][$key]=$value-15;
 }
 
 //将多个数组混合到一起
@@ -128,6 +135,7 @@ foreach ($totalMon as $key => $value) {
 
 $totalMon=array();
 
+$intervalDate=array_reverse($intervalDate);
 //print_r($intervalDate);
 
 $pages=ceil(count($intervalDate)/30);
@@ -157,7 +165,7 @@ if($endKey>count($intervalDate)){
 
 for ($i=$startKey; $i < $endKey; $i++) { 
 	$randmath=rand(0,19);
-	echo '<a href=""><div class="main-news-panel-before" style="background: '.$rgbValue[$randmath].'">
+	echo '<a href="before.php?method=read&token='.$intervalDate[$i].'"><div class="main-news-panel-before" style="background: '.$rgbValue[$randmath].'">
 		<p>'.$intervalDate[$i].'</p>
 	</div></a>';	
 }
@@ -178,6 +186,48 @@ for ($i=$startKey; $i < $endKey; $i++) {
 
 <?php
 echo '</div>';
+
+}else{
+?>
+		<div class="zhihu-body">
+<?php
+$handle = fopen ("http://news.at.zhihu.com/api/3/news/before/$date", "rb");
+$contents = "";
+
+do{
+	$data = fread($handle, 1024);
+	if (strlen($data) == 0) {break;}
+	$contents .= $data;
+}while(true);
+
+fclose ($handle);
+
+$deJSON=json_decode($contents,true);
+
+$countJSON_stories=count($deJSON['stories']);
+
+for ($i=0; $i < $countJSON_stories; $i++) { 
+	$shareDate=$deJSON['date'];
+	$title=$deJSON['stories'][$i]['title'];
+	$sharingURL=$deJSON['stories'][$i]['share_url'];
+	$sharingID=$deJSON['stories'][$i]['id'];
+	$ga_prefix=$deJSON['stories'][$i]['ga_prefix'];
+	$imgURL=$deJSON['stories'][$i]['images'][0];
+	echo '	<div class="main-news-panel">
+				<div class="main-news-panel-heading">
+					<img src="'.$imgURL.'" alt="'.$sharingID.'" />
+				</div>
+				<div class="main-news-panel-content">
+					<div class="news-title"><a href="contents.php?method=read&id='.$sharingID.'">'.$title.'</a></div>
+					<p class="news-date">日期:'.$shareDate.'</p>
+				</div>
+			</div>';
+}
+?>
+		</div>
+<?php
+}
+
 ?>
 
 <?php

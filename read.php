@@ -19,7 +19,6 @@ fclose ($handle);
 $deContents=json_decode($contents,true);
 
 //print_r($deContents);
-
 echo '<div class="main-wrap">
 	<div class="main-wrap-img">
 		<div class="main-wrap-img-top"><img src="'.$deContents['image'].'" alt="'.$id.'" /></div>

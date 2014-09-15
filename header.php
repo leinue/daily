@@ -1,13 +1,13 @@
 <!DOCTYPE html>
 <html lang="zh-cn">
  	<head>
- 		<title>直呼日报</title>
+ 		<title>直呼日报 1.0 Alpha</title>
  		<link href="style.css" rel="stylesheet">
  	</head>
 	<body>
 
 		<div class="zhihu-top-heading">
-			<span class="zhihu-main-title">直呼日报</span>
+			<span class="zhihu-main-title">直呼日报 Alpha</span>
 			<p class="zhihu-help-block">每天⑨次 ⑨次每天</p>
 		</div>
 
