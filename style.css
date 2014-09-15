@@ -36,6 +36,7 @@ body{background: rgb(192,222,237);}
 	margin: 0px auto;
 	height: 200px;
 	margin-top: 20px;
+    padding-bottom: 200px;
 }
 
 .main-news-panel,.main-news-panel-before{
@@ -137,12 +138,20 @@ body{background: rgb(192,222,237);}
 	margin-left: 20px;
 }
 
-.footer{
+/*.footer{
 	margin:0 auto;
 	padding: 10px;
 	width: 1000px;
-	margin-top: 260px;
+	margin-top: 700px;
 	text-align: center;
+	position: relative;
+}*/
+
+.footer {
+	position: relative;   
+    clear:both;
+    text-align: center;
+   padding-top: 80px;
 }
 
 .footer span{color: #2980b9;}

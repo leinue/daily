@@ -4,6 +4,12 @@
 $handle = fopen ("http://news-at.zhihu.com/api/3/news/latest", "rb");
 $contents = "";
 
+$rgbValue=array(
+	"#1abc9c","#2ecc71","#3498db","#9b59b6","#34495e",
+	"#16a085","#27ae60","#2980b9","#8e44ad","#2c3e50",
+	"#f1c40f","#e67e22","#e74c3c","#ecf0g1","#95a5a6",
+	"#f39c12","#d35400","#c0392b","#bdc3c7","#7f8c8d");
+
 do{
 	$data = fread($handle, 1024);
 	if (strlen($data) == 0) {break;}
@@ -28,7 +34,8 @@ for ($i=0; $i < $countJSON_stories; $i++) {
 	$sharingID=$deJSON['stories'][$i]['id'];
 	$ga_prefix=$deJSON['stories'][$i]['ga_prefix'];
 	$imgURL=$deJSON['stories'][$i]['images'][0];
-	echo '	<div class="main-news-panel">
+	$randmath=rand(0,19);
+	echo '	<div class="main-news-panel" style="background:'.$rgbValue[$randmath].';">
 				<div class="main-news-panel-heading">
 					<img src="'.$imgURL.'" alt="'.$sharingID.'" />
 				</div>
@@ -47,7 +54,8 @@ for ($i=0;$i<$countJSON_top_stories;$i++) {
 	$sharingID=$deJSON['top_stories'][$i]['id'];
 	$ga_prefix=$deJSON['top_stories'][$i]['ga_prefix'];
 	$imgURL=$deJSON['top_stories'][$i]['image'];
-	echo '	<div class="main-news-panel">
+	$randmath=rand(0,19);
+	echo '	<div class="main-news-panel" style="background:'.$rgbValue[$randmath].';">
 				<div class="main-news-panel-heading">
 					<img src="'.$imgURL.'" alt="'.$sharingID.'" />
 				</div>

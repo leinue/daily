@@ -3,6 +3,7 @@
  	<head>
  		<title>直呼日报 1.0 Alpha</title>
  		<link href="style.css" rel="stylesheet">
+ 		<meta http-equiv="Content-Type" content="text/html; charset=utf8" /> 
  	</head>
 	<body>
 
@@ -17,7 +18,7 @@
 				<a href="before.php"><li><p>过往消息</p></li></a>
 				<a href="contact.php"><li><p>联系作者</p></li></a>
 				<a href="api.php"><li><p>API</p></li></a>
-
+				<a href="http://ivydom.com"><li><p>ivydom</p></li></a>
 			</ul>
 			<div class="zhihu-heading-model" id="zhihu-model"></div>
 		</div>
