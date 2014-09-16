@@ -183,6 +183,10 @@ body{background: rgb(192,222,237);}
 	white-space:normal;
 }
 
+.main-wrap-img-foot .content-inner{
+	padding-right: 30px;
+}
+
 .pageindex ul a{
 	text-decoration: none;
 	color: rgb(0,0,0);

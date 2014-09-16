@@ -37,7 +37,7 @@ for ($i=0; $i < $countJSON_stories; $i++) {
 	$randmath=rand(0,19);
 	echo '	<div class="main-news-panel" style="background:'.$rgbValue[$randmath].';">
 				<div class="main-news-panel-heading">
-					<img src="'.$imgURL.'" alt="'.$sharingID.'" />
+					<img id="img-'.$sharingID.'" src="'.$imgURL.'" alt="'.$sharingID.'" />
 				</div>
 				<div class="main-news-panel-content">
 					<div class="news-title"><a href="contents.php?method=read&id='.$sharingID.'">'.$title.'</a></div>

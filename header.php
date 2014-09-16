@@ -3,7 +3,9 @@
  	<head>
  		<title>直呼日报 1.0 Alpha</title>
  		<link href="style.css" rel="stylesheet">
- 		<meta http-equiv="Content-Type" content="text/html; charset=utf8" /> 
+ 		<meta http-equiv="Content-Type" content="text/html; charset=utf8" />
+ 		<meta name="Description" content="直呼日报">
+		<meta name="keywords" content="直呼日报,每天⑨次,干杯,如何正确的吐槽,知乎,知识,好奇心" />
  	</head>
 	<body>
 
