@@ -109,7 +109,7 @@ for ($i=0; $i < getMonthLastDay($timeWithoutUnix_exploded[1],$timeWithoutUnix_ex
 array_splice($monOther[count($monOther)-1],0,(getMonthLastDay($timeWithoutUnix_exploded[1],$timeWithoutUnix_exploded[0])-$timeWithoutUnix_exploded[2]));
 
 foreach ($monOther[count($monOther)-1] as $key => $value) {
-	$monOther[count($monOther)-1][$key]=$value-15;
+	$monOther[count($monOther)-1][$key]=$value-(getMonthLastDay($timeWithoutUnix_exploded[1],$timeWithoutUnix_exploded[0])-date("d"));
 }
 
 //将多个数组混合到一起
