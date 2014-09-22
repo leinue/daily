@@ -33,17 +33,33 @@ class decodeJSON{
 	function decode(){return json_decode($this->contents);}
 }
 
+class getBase extends infoMgr{
+
+	function __construct(){
+		
+	}
+
+	function get($url=NULL){
+
+		if($url==NULL){
+			$url="http://news-at.zhihu.com/api/3/news/latest";
+		}
+
+		parent::$handle=fopen($url,"rb");
+		if(parent::$handle){
+			return parent::read();
+		}else{
+			return false;
+		}
+	}
+}
+
 class todayMgr extends infoMgr{
 	protected $infomgr;
 	
 	function __construct(infoMgr $infoMgr){$this->infomgr=$infoMgr;}
 
-	function getJSON($url=NULL){
-		parent::$handle=fopen("http://news-at.zhihu.com/api/3/news/latest","rb");
-		if(parent::$handle){
-			return $this->infomgr->read();
-		}else{return false;}
-	}
+	function getJSON(getBase $getBase){return $getBase->get();}
 
 	function getContext(decodeJSON $DJSON){
 		$jsonData=$DJSON->decode();
@@ -52,6 +68,7 @@ class todayMgr extends infoMgr{
 }
 
 class beforeMgr extends infoMgr{
+	function getJSON(getBase $getBase,$url){return $getBase->get($url);}
 
 }
 
@@ -59,7 +76,8 @@ class beforeMgr extends infoMgr{
 $im=infoMgr::getInstance();
 $tm=new todayMgr($im);
 //echo $tm->getJSON();
+$gb=new getBase();
 
-print_r($tm->getContext(new decodeJSON($tm->getJSON())));
+print_r($tm->getContext(new decodeJSON($tm->getJSON($gb))));
 
 ?>
