@@ -30,7 +30,7 @@ class decodeJSON{
 	protected $contents;
 	function __construct($contents){$this->contents=$contents;}
 
-	function decode(){return json_decode($this->contents);}
+	function decode(){return json_decode($this->contents,true);}
 }
 
 class getBase extends infoMgr{
@@ -69,10 +69,11 @@ class detailMgr extends infoMgr{
 class urlMgr{
 	private $before;
 	private $context;
+	private $latest="http://news-at.zhihu.com/api/3/news/latest";
 
 	function getContextUrl($id=NULL){
 		if($id==NULL){
-			$this->context="http://news-at.zhihu.com/api/3/news/latest";
+			$this->context=$this->latest;
 		}else{
 			$this->context="http://news-at.zhihu.com/api/3/news/$id";
 		}
@@ -81,12 +82,47 @@ class urlMgr{
 
 	function getBeforeUrl($date=NULL){
 		if($date==NULL){
-			$this->before="http://news-at.zhihu.com/api/3/news/latest";
+			$this->before=$this->latest;
 		}else{
 			$this->before="http://news.at.zhihu.com/api/3/news/before/$date";
 		}
 		return $this->before;
 	}
+}
+
+class DataObj{
+	public $_data;
+	public $storiesData;
+	public $singleNew;
+
+	function __construct($data){$this->_data=$data;}
+
+	function getDate(){return $this->_data['date'];}
+
+	function getNewsNum(){return count($this->_data["stories"]);}
+
+	function getStories(){
+		$this->storiesData=$this->_data["stories"];
+		return $this->storiesData;
+	}
+
+	function getSingleNew($key){
+		$this->singleNew=$this->storiesData[$key];
+		return $this->singleNew;
+	}
+
+	function getTitle(){return $this->singleNew['title'];}
+
+	function getShareUrl(){return $this->singleNew['share_url'];}
+
+	function getGaOrefix(){return $this->singleNew['ga_prefix'];}
+
+	function getImages(){return $this->singleNew['images'][0];}
+
+	function getType(){return $this->singleNew['type'];}
+
+	function getID(){return $this->singleNew['id'];}
+
 }
 
 //ini
@@ -98,18 +134,31 @@ $gb=new getBase();
 $jsonData=$tm->getJSON($gb);
 $jsonArray=$tm->getContext(new decodeJSON($jsonData));
 
-print_r($jsonArray);
+//print_r($jsonArray);
+$dataParser=new DataObj($jsonArray);
+//echo $dataParser->getDate();
+
+$stories=$dataParser->getStories();
+
+foreach ($stories as $key => $value) {
+	$singleNew=$dataParser->getSingleNew($key);
+	echo $dataParser->getTitle()."<br>";
+}
 
 //print before
-$jsonData=$tm->getJSON($gb,"http://news.at.zhihu.com/api/3/news/before/20140920");
+$url=new urlMgr();
+$urlAvailable=$url->getBeforeUrl("20140920");
+$jsonData=$tm->getJSON($gb,$urlAvailable);
 $jsonArray=$tm->getContext(new decodeJSON($jsonData));
 
-print_r($jsonArray);
+//print_r($jsonArray);
 
-//print id
-$jsonData=$tm->getJSON($gb,"http://news-at.zhihu.com/api/3/news/4170735");
+//print context with id
+$url=new urlMgr();
+$urlAvailable=$url->getContextUrl("4170735");
+$jsonData=$tm->getJSON($gb,$urlAvailable);
 $jsonArray=$tm->getContext(new decodeJSON($jsonData));
 
-print_r($jsonArray);
+//print_r($jsonArray);
 
 ?>
