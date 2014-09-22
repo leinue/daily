@@ -35,9 +35,7 @@ class decodeJSON{
 
 class getBase extends infoMgr{
 
-	function __construct(){
-		
-	}
+	function __construct(){}
 
 	function get($url=NULL){
 
@@ -54,12 +52,13 @@ class getBase extends infoMgr{
 	}
 }
 
-class todayMgr extends infoMgr{
+class detailMgr extends infoMgr{
 	protected $infomgr;
 	
 	function __construct(infoMgr $infoMgr){$this->infomgr=$infoMgr;}
 
-	function getJSON(getBase $getBase){return $getBase->get();}
+	//若$url为空,则显示今天的消息,否则显示特定的消息
+	function getJSON(getBase $getBase,$url=NULL){return $getBase->get($url);}
 
 	function getContext(decodeJSON $DJSON){
 		$jsonData=$DJSON->decode();
@@ -67,17 +66,50 @@ class todayMgr extends infoMgr{
 	}
 }
 
-class beforeMgr extends infoMgr{
-	function getJSON(getBase $getBase,$url){return $getBase->get($url);}
+class urlMgr{
+	private $before;
+	private $context;
 
+	function getContextUrl($id=NULL){
+		if($id==NULL){
+			$this->context="http://news-at.zhihu.com/api/3/news/latest";
+		}else{
+			$this->context="http://news-at.zhihu.com/api/3/news/$id";
+		}
+		return $this->context;
+	}
+
+	function getBeforeUrl($date=NULL){
+		if($date==NULL){
+			$this->before="http://news-at.zhihu.com/api/3/news/latest";
+		}else{
+			$this->before="http://news.at.zhihu.com/api/3/news/before/$date";
+		}
+		return $this->before;
+	}
 }
 
-
+//ini
 $im=infoMgr::getInstance();
-$tm=new todayMgr($im);
-//echo $tm->getJSON();
+$tm=new detailMgr($im);
 $gb=new getBase();
 
-print_r($tm->getContext(new decodeJSON($tm->getJSON($gb))));
+//print today
+$jsonData=$tm->getJSON($gb);
+$jsonArray=$tm->getContext(new decodeJSON($jsonData));
+
+print_r($jsonArray);
+
+//print before
+$jsonData=$tm->getJSON($gb,"http://news.at.zhihu.com/api/3/news/before/20140920");
+$jsonArray=$tm->getContext(new decodeJSON($jsonData));
+
+print_r($jsonArray);
+
+//print id
+$jsonData=$tm->getJSON($gb,"http://news-at.zhihu.com/api/3/news/4170735");
+$jsonArray=$tm->getContext(new decodeJSON($jsonData));
+
+print_r($jsonArray);
 
 ?>
