@@ -117,7 +117,19 @@ class DataObj{
 
 	function getGaOrefix(){return $this->singleNew['ga_prefix'];}
 
-	function getImages(){return $this->singleNew['images'][0];}
+	function getImages(){
+    	$pic=$this->singleNew['images'][0];//远程文件路径
+        $data=file_get_contents($pic); // 读文件内容 
+        $filepath="../img/".$this->getDate()."/";
+        if(!is_dir($filepath)){
+            mkdir($filepath,0777,true);
+        }
+        $filename=$this->getID().'.'.substr($pic,-3,3);
+        $fp=@fopen($filepath.$filename,"w"); 
+        @fwrite($fp,$data);
+        fclose($fp);
+		return $filepath.$filename;
+	}
 
 	function getType(){return $this->singleNew['type'];}
 
@@ -142,7 +154,7 @@ $stories=$dataParser->getStories();
 
 foreach ($stories as $key => $value) {
 	$singleNew=$dataParser->getSingleNew($key);
-	echo $dataParser->getTitle()."<br>";
+	echo "<img src=\"".$dataParser->getImages()."\" alt=\"233\"/>";
 }
 
 //print before
