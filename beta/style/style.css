@@ -41,6 +41,8 @@ body{
 	color: rgb(102,102,102);
 }
 
+.menu-active{border-bottom: 2px solid rgb(41,128,185);}
+
 .main-menu li:hover{
 	color: rgb(50,50,50);
 	border-bottom: 2px solid rgb(41,128,185);
@@ -87,7 +89,12 @@ body{
 	background: rgb(250,250,250);
 }
 
-.main-title{margin-left: 10px;}
+.main-title{
+	margin-left: 10px;
+	font-size: 14px;
+	margin-right: 10px;
+	height: 75px;
+}
 
 .main-title a{
 	text-decoration: none;
@@ -101,7 +108,6 @@ body{
 	color: rgb(170,170,170);
 	margin-right: 10px;
 	font-size: 14px;
-	margin-top: 10px;
 }
 
 .main-box-postscript{
@@ -119,8 +125,9 @@ body{
 
 .footer{
 	position:fixed;
-	bottom:20px;
+	bottom:-30px;
 	margin-left: 461px;
+	margin-bottom: 20px;
 }
 
 .footer ul{

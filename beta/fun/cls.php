@@ -129,9 +129,7 @@ class DataObj{
 
 	function getSingleNew($key=NULL){
 		if($this->isList()){
-			if(!$key==NULL){
-				$this->singleNew=$this->storiesData[$key];
-			}
+			$this->singleNew=$this->storiesData[$key];
 		}else{
 			$this->singleNew=$this->_data;
 		}
@@ -304,6 +302,7 @@ class dateMgr{
 	}
 }
 
+/*
 //ini
 $im=infoMgr::getInstance();
 $tm=new detailMgr($im);
@@ -346,5 +345,5 @@ $stories=$dataParser->getSingleNew();
 
 $allDate=new dateMgr();
 //print_r($allDate->getAllDate());
-
+*/
 ?>
