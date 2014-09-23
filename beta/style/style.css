@@ -3,11 +3,16 @@ body{
 	font-family:"微软雅黑,宋体";
 }
 
+.body-head{
+	margin: 0 auto;
+	width: 1012px;
+	margin-left: 161px;
+}
+
 .body-menu{
 	background: rgb(255,255,255);
-	width: 1000px;
+	width: 1012px;
 	height: 50px;
-	margin: 0 auto;
 	border-bottom: 1px solid rgb(221,221,221);
 	margin-top: 0px;
 }
@@ -48,8 +53,9 @@ body{
 
 .body-content{
 	margin: 0 auto;
-	width: 900px;
+	width: 1150px;
 	margin-top: 20px;
+	margin-left: 161px;
 }
 
 .content-main-box{
@@ -109,4 +115,20 @@ body{
 .main-box-postscript a{
 	text-decoration: none;
 	color: rgb(153,153,153);
+}
+
+.footer{
+	position:fixed;
+	bottom:20px;
+	margin-left: 461px;
+}
+
+.footer ul{
+	list-style: none;
+}
+
+.footer ul li{
+	float: left;
+	margin-right: 5px;
+	color: rgb(127,140,141);
 }

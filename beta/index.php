@@ -71,20 +71,6 @@
 				</div>
 			</div>
 
-			<div class="content-main-box">
-				<div class="main-box-img">
-					<img src="http://hd.shijue.cvidea.cn/tf/140919/2351836/541bb4363dfae98c13000001.JPEG" alt="11" />
-				</div>
-				<div class="main-box-content">
-					<div class="main-title">
-						<a href="">我参与了很多大公司的上市敲钟，分享下现场的图片</a>
-					</div>
-					<div class="main-time">20140520</div>
-				</div>
-				<div class="main-box-footer">
-					<div class="main-box-postscript">来自:<a href="http://zhihu.com">zhihu.com</a></div>
-				</div>
-			</div>
 
 			<div class="content-main-box">
 				<div class="main-box-img">
@@ -115,11 +101,32 @@
 					<div class="main-box-postscript">来自 <a href="http://zhihu.com">zhihu.com</a></div>
 				</div>
 			</div>
+
+			<div class="content-main-box">
+				<div class="main-box-img">
+					<img src="http://hd.shijue.cvidea.cn/tf/140919/2351836/541bb4363dfae98c13000001.JPEG" alt="11" />
+				</div>
+				<div class="main-box-content">
+					<div class="main-title">
+						<a href="">我参与了很多大公司的上市敲钟，分享下现场的图片</a>
+					</div>
+					<div class="main-time">20140520</div>
+				</div>
+				<div class="main-box-footer">
+					<div class="main-box-postscript">来自 <a href="http://zhihu.com">zhihu.com</a></div>
+				</div>
+			</div>
+
 		</div>
+
+	 	<div class="footer">
+	 		<ul>
+	 			<li>@2014 直呼日报 |</li>
+	 			<li>数据来自 <a href="http://zhihu.com" target="_blank">知乎</a> |</li>
+	 			<li><a href="http://ivydom.com" target="_blank">ivydom</a> 版权所有</li>
+	 		</ul>
+ 		</div>
+
  	</body>
-
- 	<foot>
-
- 	</foot>
 
 </html>
