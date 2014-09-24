@@ -29,7 +29,7 @@ if(strlen($id)==0 || !is_numeric($id)){
 				<div class="read-title">
 					<div class="read-headline">羽翼</div>
 					<div class="help-info">
-						<p>日期：20100520 图片来源：蛤蛤蛤</p>
+						<p>日期：20100520 图片来源：<?php  echo $dataParser->getImageSource(); ?></p>
 					</div>
 				</div>
 				<div class="read-main-content">
