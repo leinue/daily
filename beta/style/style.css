@@ -53,7 +53,7 @@ body{
 
 .main-menu .menu-logo:hover{border-bottom: 0px solid rgb(221,221,221);}
 
-.body-content{
+.body-content,.read-content{
 	margin: 0 auto;
 	width: 1150px;
 	margin-top: 20px;
@@ -138,4 +138,54 @@ body{
 	float: left;
 	margin-right: 5px;
 	color: rgb(127,140,141);
+}
+
+/**********read page************/
+
+.read-content{
+	width: 992px;
+	padding: 20px;
+	padding-top: 0;
+}
+
+.read-left{
+	float: left;
+	width: 650px;
+	height: 200px;
+	border: 1px solid rgb(221,221,221);
+	background: rgb(255,255,255);
+	margin-left: -21px;
+	margin-right: 20px;
+}
+
+.read-right{
+	float: left;
+	width: 339px;
+	height: 200px;
+	border: 1px solid rgb(221,221,221);
+	background: rgb(255,255,255);
+}
+
+.read-title{
+	padding: 15px;
+	border-bottom: 1px solid rgb(221,221,221);
+}
+
+.help-info{
+	margin-bottom: 10px;
+}
+
+.read-title p{
+	font-size: 28px;
+	margin-bottom: 10px;
+}
+
+.help-info ul{
+	list-style: none;
+	margin-left: -38px;
+}
+
+.help-info ul li{
+	float: left;
+	margin-right: 20px;
 }

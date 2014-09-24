@@ -1,4 +1,3 @@
-<link rel="stylesheet" type="text/css" href="http://news.at.zhihu.com/css/news_qa.auto.css?v=0abbb">
 <?php
 
 class infoMgr{
@@ -300,6 +299,14 @@ class dateMgr{
 
 		return $intervalDate;
 	}
+}
+
+
+function test_input($data) {
+  $data = trim($data);
+  $data = stripslashes($data);
+  $data = htmlspecialchars($data);
+  return $data;
 }
 
 /*
