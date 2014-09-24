@@ -130,9 +130,7 @@ body{
 	margin-bottom: 20px;
 }
 
-.footer ul{
-	list-style: none;
-}
+.footer ul{list-style: none;}
 
 .footer ul li{
 	float: left;
@@ -151,11 +149,11 @@ body{
 .read-left{
 	float: left;
 	width: 650px;
-	height: 200px;
 	border: 1px solid rgb(221,221,221);
 	background: rgb(255,255,255);
 	margin-left: -21px;
 	margin-right: 20px;
+	border-bottom: 2px solid rgb(221,221,221);
 }
 
 .read-right{
@@ -164,6 +162,7 @@ body{
 	height: 200px;
 	border: 1px solid rgb(221,221,221);
 	background: rgb(255,255,255);
+	border-bottom: 2px solid rgb(221,221,221);
 }
 
 .read-title{
@@ -171,12 +170,12 @@ body{
 	border-bottom: 1px solid rgb(221,221,221);
 }
 
-.help-info{
-	margin-bottom: 10px;
-}
+.read-headline{font-size: 32px;}
+
+.help-info{margin-bottom: 10px;}
 
 .read-title p{
-	font-size: 28px;
+	color: rgb(170,170,170);
 	margin-bottom: 10px;
 }
 
@@ -189,3 +188,17 @@ body{
 	float: left;
 	margin-right: 20px;
 }
+
+.read-main-content{
+	padding: 15px;
+}
+
+.read-footer{
+	padding: 15px;
+}
+
+.read-footer span{
+	color: rgb(170,170,170);
+}
+
+.read-footer span a{text-decoration: none;}
