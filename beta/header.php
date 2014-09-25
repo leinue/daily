@@ -21,7 +21,6 @@
 					<li><a href="before.php">过往消息</a></li>
 					<li><a href="contact.php">联系我</a></li>
 					<li><a href="api.php">API</a></li>
-					<li><a href="codes.php">Codes</a></li>
 					<li><a href="http://ivydom.com" target="_blank">ivydom</a></li>
 				</ul>
 			</div>
