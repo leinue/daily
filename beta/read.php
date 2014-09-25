@@ -25,26 +25,40 @@ if(strlen($id)==0 || !is_numeric($id)){
 		//echo $dataParser->getImages();
 
 		$allContents=$dataParser->getBody();
-		//<img class="avatar" src=" ">
-		$eregPattern="<img class=\"avatar\" src=\"+[a-zA-Z0-9\.\_\/\:]+\">";
-		ereg($eregPattern,$allContents,$faceUrl);
-		$faceUrlFixed=substr($faceUrl[0],25);
-		$faceUrlFixed=substr($faceUrlFixed,0,strlen($faceUrlFixed)-2);
-		$data=file_get_contents($faceUrlFixed);
+		$newsTitle=$dataParser->getTitle();
 
-		$filepath="../img/avatar/".$id.".".substr($faceUrlFixed,-3,3);
-		if(!file_exists($filepath)){
-			$fp=@fopen($filepath,"w"); 
-       		@fwrite($fp,$data);
-        	fclose($fp);
+		$keyTitle = array("整","点","儿","新","闻");
+		$flag=0;
+
+		foreach ($keyTitle as $key => $value) {
+			if (stripos($newsTitle,$value)) {
+				$flag++;
+			}
 		}
 
-		$allContents=str_replace($faceUrlFixed,$filepath,$allContents);
+		if(!$flag>0){
+			//<img class="avatar" src=" ">
+			$eregPattern="<img class=\"avatar\" src=\"+[a-zA-Z0-9\.\_\/\:]+\">";
+			ereg($eregPattern,$allContents,$faceUrl);
+			$faceUrlFixed=substr($faceUrl[0],25);
+			$faceUrlFixed=substr($faceUrlFixed,0,strlen($faceUrlFixed)-2);
+			$data=file_get_contents($faceUrlFixed);
+
+			$filepath="../img/avatar/".$id.".".substr($faceUrlFixed,-3,3);
+			if(!file_exists($filepath)){
+				$fp=@fopen($filepath,"w"); 
+       			@fwrite($fp,$data);
+        		fclose($fp);
+			}
+
+			$allContents=str_replace($faceUrlFixed,$filepath,$allContents);
+		}
+
 ?>
 		<div class="read-content">
 			<div class="read-left">
 				<div class="read-title">
-					<div class="read-headline"><?php echo $dataParser->getTitle(); ?></div>
+					<div class="read-headline"><?php echo $newsTitle; ?></div>
 					<div class="help-info">
 						<p>图片来源：<?php  echo $dataParser->getImageSource(); ?></p>
 					</div>
