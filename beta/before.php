@@ -49,13 +49,19 @@ if(!(strlen($date)==0)){
 	echo '</div>';
 
 }else{
+	$dm=new dateMgr();
+	$allDate=$dm->getAllDate();
+
+	foreach ($allDate as $key => $value) {
+		echo '		<div class="body-content">
+			<div class="before-box">
+				<p><a href="before.php?av='.$value.'">'.$value.'</a></p>
+			</div>
+		</div>';
+	}
 
 ?>
-		<div class="body-content">
-			<div class="before-box">
-				<p><a href="before.php?av=20140215">20140215</a></p>
-			</div>
-		</div>
+
 <?php
 }
 

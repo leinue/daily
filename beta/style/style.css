@@ -191,17 +191,11 @@ body{
 	margin-right: 20px;
 }
 
-.read-main-content{
-	padding: 15px;
-}
+.read-main-content{padding: 15px;}
 
-.read-footer{
-	padding: 15px;
-}
+.read-footer{padding: 15px;}
 
-.read-footer span{
-	color: rgb(170,170,170);
-}
+.read-footer span{color: rgb(170,170,170);}
 
 .read-footer span a{text-decoration: none;}
 
@@ -230,6 +224,41 @@ body{
 
 .before-box p a{text-decoration: none;}
 
-.before-box p a:hover{
-	text-decoration: underline;
+.before-box p a:hover{text-decoration: underline;}
+
+.contact-box{
+	width: 1010px;
+	height: 150px;
+	border:1px solid rgb(221,221,221);
+	background: rgb(255,255,255);
+	border-bottom: 1px solid rgb(221,221,221);
+	padding: 15px;
+}
+
+.contact-headline{
+	font-size: 26px;
+	text-align: center;
+	border-bottom: 1px solid rgb(221,221,221);
+	padding-bottom: 15px;
+}
+
+.contact-content{margin-top: 15px;}
+
+.contact-detail{
+	float: left;
+	border: 1px solid rgb(221,221,221);
+	padding: 15px;
+	margin-right: 20px;
+	margin-bottom: 20px;
+}
+
+.contact-detail:hover{background: rgb(250,250,250);}
+
+.contact-detail a{text-decoration: none;}
+
+#first-contact{margin-left: 40px;}
+
+.split-col{
+	margin-top: 85px;
+	border-bottom: 1px solid rgb(221,221,221);
 }

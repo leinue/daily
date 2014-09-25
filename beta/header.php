@@ -19,9 +19,10 @@
 					<li class="menu-logo"><a href=""><img src="favicon.ico" alt="logo" /></a></li>
 					<li class="menu-active"><a href="index.php">日报首页</a></li>
 					<li><a href="before.php">过往消息</a></li>
-					<li><a href="">联系我</a></li>
-					<li><a href="">API</a></li>
-					<li><a href="">Codes</a></li>
+					<li><a href="contact.php">联系我</a></li>
+					<li><a href="api.php">API</a></li>
+					<li><a href="codes.php">Codes</a></li>
+					<li><a href="http://ivydom.com" target="_blank">ivydom</a></li>
 				</ul>
 			</div>
 		</div>
