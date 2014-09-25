@@ -23,18 +23,33 @@ if(strlen($id)==0 || !is_numeric($id)){
 	}else{
 		//print_r($stories);
 		//echo $dataParser->getImages();
+
+		$allContents=$dataParser->getBody();
+		//<img class="avatar" src=" ">
+		$eregPattern="<img class=\"avatar\" src=\"+[a-zA-Z0-9\.\_\/\:]+\">";
+		ereg($eregPattern,$allContents,$faceUrl);
+		$faceUrlFixed=substr($faceUrl[0],25);
+		$faceUrlFixed=substr($faceUrlFixed,0,strlen($faceUrlFixed)-2);
+		$data=file_get_contents($faceUrlFixed);
+
+		$filepath="../img/avatar/".$id.".".substr($faceUrlFixed,-3,3);
+		if(!file_exists($filepath)){
+			$fp=@fopen($filepath,"w"); 
+       		@fwrite($fp,$data);
+        	fclose($fp);
+		}
+
+		$allContents=str_replace($faceUrlFixed,$filepath,$allContents);
 ?>
 		<div class="read-content">
 			<div class="read-left">
 				<div class="read-title">
-					<div class="read-headline">羽翼</div>
+					<div class="read-headline"><?php echo $dataParser->getTitle(); ?></div>
 					<div class="help-info">
-						<p>日期：20100520 图片来源：<?php  echo $dataParser->getImageSource(); ?></p>
+						<p>图片来源：<?php  echo $dataParser->getImageSource(); ?></p>
 					</div>
 				</div>
-				<div class="read-main-content">
-					sdsdsddsd
-				</div>
+				<div class="read-main-content"><?php echo $allContents; ?></div>
 				<div class="read-footer">
 					<span class="read-copyright">版权声明：除非注明，本站文章均为原创或编译，转载请注明： 文章来自 <a href="http://zhihu.com" target="_blank">知乎</a></span>
 				</div>
