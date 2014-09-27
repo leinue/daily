@@ -74,7 +74,7 @@ if(strlen($id)==0 || !is_numeric($id)){
 				</div>
 			</div>
 			<div class="read-right">
-				<img src="<?php echo $dataParser->getImages(); ?>" alt="125152" width="339" height="200">
+				<img src="daily.ivydom.com/<?php echo $dataParser->getImages(); ?>" alt="125152" width="339" height="200">
 			</div>
 		</div>
 <?php

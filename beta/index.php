@@ -23,7 +23,7 @@
 			$singleNew=$dataParser->getSingleNew($key);
 			echo '			<div class="content-main-box">
 				<div class="main-box-img">
-					<img src="'.$dataParser->getImages().'" alt="'.$dataParser->getID().'" />
+					<img src="daily.ivydom.com/'.$dataParser->getImages().'" alt="'.$dataParser->getID().'" />
 				</div>
 				<div class="main-box-content">
 					<div class="main-title">
