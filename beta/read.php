@@ -44,10 +44,10 @@ if(strlen($id)==0 || !is_numeric($id)){
 			$faceUrlFixed=substr($faceUrlFixed,0,strlen($faceUrlFixed)-2);
 			$data=file_get_contents($faceUrlFixed);
 
-			$filepath="\/img/avatar/".$id.".".substr($faceUrlFixed,-3,3);
+			$filepath="img/avatar/".$id.".".substr($faceUrlFixed,-3,3);
 
-			if(!is_dir("\/img/avatar/")){
-            	mkdir("\/img/avatar/",0777,true);
+			if(!is_dir("img/avatar/")){
+            	mkdir("img/avatar/",0777,true);
         	}
 
 			if(!file_exists($filepath)){
@@ -74,7 +74,7 @@ if(strlen($id)==0 || !is_numeric($id)){
 				</div>
 			</div>
 			<div class="read-right">
-				<img src="daily.ivydom.com/<?php echo $dataParser->getImages(); ?>" alt="125152" width="339" height="200">
+				<img src="<?php echo $dataParser->getImages(); ?>" alt="125152" width="339" height="200">
 			</div>
 		</div>
 <?php

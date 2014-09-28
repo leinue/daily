@@ -152,7 +152,7 @@ class DataObj{
 			$pic=$this->singleNew["image"];
 		}
     	
-        $filepath="\/img/".$this->getDate()."/";
+        $filepath="img/".$this->getDate()."/";
         if(!is_dir($filepath)){
             mkdir($filepath,0777,true);
         }
