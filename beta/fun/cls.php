@@ -154,7 +154,10 @@ class DataObj{
     	
         $filepath="img/".$this->getDate()."/";
         if(!is_dir($filepath)){
-            mkdir($filepath,0777,true);
+            $res = mkdir($filepath,0777,true);
+            if(!$res) {
+              @unlink('img');        
+            }
         }
         $filename=$namePrefix.$this->getID().'.'.substr($pic,-3,3);
         if(!file_exists($filepath.$filename)){
